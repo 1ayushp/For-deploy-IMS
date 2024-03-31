@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'hello.wsgi.application'
 # }
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.config(
+    'postgres': dj_database_url.config(
         # Replace this value with your local database's connection string.
         default='postgres://ims_postgracesql_instance_user:Bzv2nvkwdYgRs7isoxx576p2c0CM22zL@dpg-co4h1bi1hbls73bt4ej0-a.oregon-postgres.render.com/ims_postgracesql_instance',
         conn_max_age=600
     ),
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
