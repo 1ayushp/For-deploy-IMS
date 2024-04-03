@@ -18,16 +18,20 @@ from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# importing necessary functions from dotenv library
+from dotenv import load_dotenv, dotenv_values 
+# loading variables from .env file
+load_dotenv() 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sk#!*89dq8n7m@!_tym0^u%h7!mhpa=64)*z4*90%v9u8qnrfy'
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -93,7 +97,7 @@ WSGI_APPLICATION = 'hello.wsgi.application'
 DATABASES = {
     'postgres': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://ims_postgracesql_instance_user:Bzv2nvkwdYgRs7isoxx576p2c0CM22zL@dpg-co4h1bi1hbls73bt4ej0-a.oregon-postgres.render.com/ims_postgracesql_instance',
+        default=os.getenv("External_Database_URL"),
         conn_max_age=600
     ),
     'default': {
